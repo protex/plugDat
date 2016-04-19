@@ -116,3 +116,5 @@ var plugDat = function () {
 
     return plugDat;
 }();
+
+window._plugDat = new plugDat();
