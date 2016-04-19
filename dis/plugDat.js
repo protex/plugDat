@@ -6,7 +6,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-_plugDat_waitList = [];
+window._plugDat_waitList = [];
 
 var plugDat = function () {
     function plugDat() {
@@ -44,7 +44,13 @@ var plugDat = function () {
 
                     var _callBlock = _this.callBlock;
                     for (var i in _callBlock) {
-                        for (var x in _callBlock[i]) {}
+                        for (var x in _callBlock[i]) {
+                            if (_callBlock[i][x].initLoci === "global") {
+                                window[_callBlock[i][x].name].init();
+                            } else {
+                                window[_callBlock[i][x][initLoci]][callBlcok[i][x].name].init();
+                            }
+                        }
                     }
 
                     clearInterval(pause);

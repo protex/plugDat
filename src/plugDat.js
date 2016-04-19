@@ -1,4 +1,6 @@
-_plugDat_waitList = [];
+// Define global variable for waitlist
+// Must use window.xyz syntax because transpiler will invoke "use strict";
+window._plugDat_waitList = [];
 class plugDat {
     
     constructor(){
@@ -67,7 +69,11 @@ class plugDat {
                 let callBlock = this.callBlock;
                 for(var i in callBlock) {
                     for(var x in callBlock[i]) {
-                        
+                        if (callBlock[i][x].initLoci === "global") {
+                            window[callBlock[i][x].name].init();
+                        } else {
+                            window[callBlock[i][x][initLoci]][callBlcok[i][x].name].init();
+                        }
                     }
                 }
                 
