@@ -167,3 +167,6 @@ class plugDat {
     }
     
 }
+
+// Make global instance of database
+window._plugDat = new plugDat();
